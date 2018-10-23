@@ -4,6 +4,7 @@ import { Http, Headers, Jsonp } from '@angular/http';
 import { FormBuilder, FormGroup, Validators, Form, ValidatorFn, AbstractControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import {CreateTicketPage} from '../create-ticket/create-ticket';
+import {ShowTicketPage} from '../show-ticket/show-ticket';
 /**
  * Generated class for the LoginPage page.
  *
@@ -41,7 +42,7 @@ export class LoginPage {
     this.http.post('http://localhost:8080/suprath/suprath.php?rquest=login', JSON.stringify(data), {headers:headers}).map(res => res.json()).subscribe((res) => {
       if(res.status == "Success")
       {
-        this.navCtrl.push(CreateTicketPage, {
+        this.navCtrl.push(ShowTicketPage, {
           id:res.id
         })
       }
