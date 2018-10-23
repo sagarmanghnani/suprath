@@ -18,10 +18,10 @@
   <ion-grid>
     <ion-list >
       <ion-item *ngFor="let tickets of pendingTickets" (click)="pressedTickets(tickets.ticketNumber)" >
-        {{tickets.ticketNumber}}
-        {{tickets.priority}}
-        {{tickets.ticketDescription}}
-        {{tickets.fullName}}
+        Ticket number: {{tickets.ticketNumber}}
+        Ticket Priority: {{priority}}
+        Ticket Description: {{tickets.ticketDescription}}
+        Ticket Owner: {{tickets.fullName}}
       </ion-item>
     </ion-list>
   </ion-grid>

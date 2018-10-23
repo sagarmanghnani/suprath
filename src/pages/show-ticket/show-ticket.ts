@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, Jsonp } from '@angular/http';
 import { FormBuilder, FormGroup, Validators, Form, ValidatorFn, AbstractControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
+import {UpdateTicketsPage} from '../update-tickets/update-tickets';
 
 /**
  * Generated class for the ShowTicketPage page.
@@ -18,7 +19,8 @@ import 'rxjs/add/operator/map';
 })
 
 export class ShowTicketPage {
-
+  status:any;
+  priority:any;
   pendingTickets:Array<Object> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder) {
     this.getUnclearedTickets();
@@ -35,6 +37,18 @@ export class ShowTicketPage {
       if(res.status == "Success")
       {
         this.pendingTickets = res.msg;
+        if(+res.priority == 0)
+        {
+          this.priority = "Low";
+        }
+        else if(+res.priority == 1)
+        {
+          this.priority = "Medium";
+        }
+        else{
+          this.priority = "High";
+        }
+
         console.log(this.pendingTickets);
       }
     })
@@ -42,7 +56,9 @@ export class ShowTicketPage {
 
   pressedTickets(ticketNumber)
   {
-    console.log(ticketNumber);
+    this.navCtrl.push(UpdateTicketsPage, {
+      ticketId: ticketNumber
+    });
   }
 
 }

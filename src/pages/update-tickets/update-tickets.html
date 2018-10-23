@@ -1,0 +1,59 @@
+<!--
+  Generated template for the UpdateTicketsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>updateTickets</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-grid>
+        <ion-list>
+            <form [formGroup] = "updateTickets">
+              <ion-item >
+                <ion-label>Select Owner</ion-label>
+                <ion-select formControlName = "Owner">
+                  <ion-option *ngFor = "let owner of ownerArray" [value] = owner.id>{{owner.fullName}}</ion-option>
+                </ion-select>
+              </ion-item>
+    
+              <ion-item >
+                  <ion-label>Select Ticket Status</ion-label>
+                  <ion-select formControlName = "ticketStatus">
+                    <ion-option value = 0>Pending</ion-option>
+                    <ion-option value = 1>Clear</ion-option>
+                  </ion-select>
+              </ion-item>
+    
+              <ion-item >
+                  <ion-label>Select Priority</ion-label>
+                  <ion-select formControlName = "priority">
+                    <ion-option value = 0>Low</ion-option>
+                    <ion-option value = 1>Medium</ion-option>
+                    <ion-option value = 2>High</ion-option>
+                  </ion-select>
+              </ion-item>
+    
+              <ion-item>
+                <ion-label floating>Ticket Description</ion-label>
+                <ion-input type="text" formControlName="ticketDescription"></ion-input>
+              </ion-item>
+    
+              <ion-item>
+                  <ion-label floating>Customer Name</ion-label>
+                  <ion-input type="text" formControlName="raisedBy"></ion-input>
+                </ion-item>
+    
+            </form>
+            <button ion-button (click) = "updateTicket()"></button>
+        </ion-list>
+      </ion-grid>
+</ion-content>

@@ -10,13 +10,15 @@ import {HttpModule} from '@angular/http';
 import { LoginPage } from '../pages/login/login';
 import { CreateTicketPage } from '../pages/create-ticket/create-ticket';
 import {ShowTicketPage} from '../pages/show-ticket/show-ticket';
+import { UpdateTicketsPage } from '../pages/update-tickets/update-tickets';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
     CreateTicketPage,
-    ShowTicketPage
+    ShowTicketPage,
+    UpdateTicketsPage,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import {ShowTicketPage} from '../pages/show-ticket/show-ticket';
     HomePage,
     LoginPage,
     CreateTicketPage,
-    ShowTicketPage
+    ShowTicketPage,
+    UpdateTicketsPage
   ],
   providers: [
     StatusBar,

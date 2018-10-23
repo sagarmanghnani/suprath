@@ -64,7 +64,7 @@ export class CreateTicketPage {
     headers.append('Content-type', 'application/json');
     this.http.post('http://localhost:8080/suprath/suprath.php?rquest=createTicket', JSON.stringify(data), {headers:headers}).map(res => res.json()).subscribe(res => {
       console.log(res);
-    })
+    });
   }
 
 
