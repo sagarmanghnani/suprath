@@ -10,7 +10,7 @@ import { CreateTicketPage } from '../pages/create-ticket/create-ticket';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = CreateTicketPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

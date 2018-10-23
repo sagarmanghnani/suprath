@@ -20,15 +20,18 @@ export class CreateTicketPage {
 
   createTicket:FormGroup
   ownerArray:Array<Object> = [];
+  showOwner:any;
+  orignalOwner:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder) {
     this.createTicket = formBuilder.group({
         ticketStatus:[''],
         priority:[''],
         ticketDescription: ['', Validators.required],
         Owner:['', Validators.required],
-        originallyOwned:['', Validators.required]
+        raisedBy: ['']
     });
     this.getOwners();
+    this.orignalOwner = this.navParams.get('id');
   }
 
   ionViewDidLoad() {
@@ -53,11 +56,13 @@ export class CreateTicketPage {
       priority: this.createTicket.get('priority').value,
       ticketDescription: this.createTicket.get('ticketDescription').value,
       Owner: this.createTicket.get('Owner').value,
-      originallyOwned: this.createTicket.get('originallyOwned').value,
+      originallyOwned: this.orignalOwner,
+      raisedBy: this.createTicket.get('raisedBy').value,
     }
+    console.log(data);
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
-    this.http.post('http://localhost:8080/suprath/suprath.php?rquest=getOwner', JSON.stringify(data), {headers:headers}).map(res => res.json()).subscribe(res => {
+    this.http.post('http://localhost:8080/suprath/suprath.php?rquest=createTicket', JSON.stringify(data), {headers:headers}).map(res => res.json()).subscribe(res => {
       console.log(res);
     })
   }
