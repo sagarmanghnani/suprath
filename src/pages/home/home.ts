@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Http, Headers, Jsonp } from '@angular/http';
 import { FormBuilder, FormGroup, Validators, Form, ValidatorFn, AbstractControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
+import {LoginPage} from '../login/login';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -23,7 +24,7 @@ export class HomePage {
 
   signUp()
   {
-    var data = {
+    let data = {
       fullName:this.user.get('fullName').value,
       username:this.user.get('username').value,
       password:this.user.get('password').value,
@@ -37,7 +38,7 @@ export class HomePage {
     this.http.post('http://localhost:8080/suprath/suprath.php?rquest=signUp', JSON.stringify(data), {headers:headers}).map(res => res.json()).subscribe(res => {
       if(res.status = "Success")
       {
-        console.log(res);
+        this.navCtrl.push(LoginPage);
       }
     });
     
