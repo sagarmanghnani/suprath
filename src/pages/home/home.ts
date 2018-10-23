@@ -30,6 +30,7 @@ export class HomePage {
       email:this.user.get('email').value,
       phone:this.user.get('phone').value,
     };
+    console.log(data);
 
     let headers = new Headers();
     headers.append('Content-type', 'application/json');

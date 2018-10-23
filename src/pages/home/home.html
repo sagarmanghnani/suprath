@@ -7,5 +7,36 @@
 </ion-header>
 
 <ion-content padding>
- 
+  <ion-grid>
+    <ion-list >
+      <form [formGroup] = "user">
+        <ion-item>
+          <ion-label floating>Fullname</ion-label>
+          <ion-input type="text" formControlName = "fullName" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" formControlName = "username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" formControlName = "email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" formControlName = "password"></ion-input>
+            </ion-item>
+
+          <ion-item>
+              <ion-label floating>Phone</ion-label>
+              <ion-input type="number" formControlName = "phone"></ion-input>
+            </ion-item>
+      </form>
+    </ion-list>
+
+    <button ion-button (click) = "signUp()">Register Here</button>
+  </ion-grid>
 </ion-content>
