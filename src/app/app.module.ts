@@ -8,12 +8,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {HttpModule} from '@angular/http';
 import { LoginPage } from '../pages/login/login';
+import { CreateTicketPage } from '../pages/create-ticket/create-ticket';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    CreateTicketPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { LoginPage } from '../pages/login/login';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    CreateTicketPage
   ],
   providers: [
     StatusBar,
