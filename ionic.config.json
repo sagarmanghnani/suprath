@@ -1,0 +1,7 @@
+{
+  "name": "suprath",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
