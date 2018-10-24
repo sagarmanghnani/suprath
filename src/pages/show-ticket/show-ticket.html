@@ -4,27 +4,34 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>showTicket</ion-title>
-  </ion-navbar>
-
-</ion-header>
 
 
 <ion-content padding>
 
+  <ion-row>
+    <ion-col>
+      <h1 text-center class="ticketManager">Ticket Manager</h1>
+    </ion-col>
+  </ion-row>
   <ion-grid>
-    <ion-list >
-      <ion-item *ngFor="let tickets of pendingTickets" (click)="pressedTickets(tickets.ticketNumber)" >
-        Ticket number: {{tickets.ticketNumber}}
-        Ticket Priority: {{tickets.priorityVal}}
-        Ticket Description: {{tickets.ticketDescription}}
-        Ticket Owner: {{tickets.fullName}}
-      </ion-item>
-    </ion-list>
+  <div class="basicPadding">  
+    <ion-row wrap>
+      
+        
+        <ion-col *ngFor="let tickets of pendingTickets" (click)="pressedTickets(tickets.ticketNumber)" col-lg-3 col-md-6 col-12 class="setCard " >
+            <span class = "cardHeading"><h2 text-center class="setText">Ticket number: {{tickets.ticketNumber}}</h2></span> 
+            <ion-col class="description">{{tickets.ticketDescription}}</ion-col><br>
+            <ion-row> 
+              <ion-col>Priority: {{tickets.priorityVal}}</ion-col> 
+              <ion-col>Owner: {{tickets.fullName}}</ion-col>
+              <ion-col>Created Date: {{tickets.createdDate|date:'dd/MM/yyyy'}}</ion-col>
+           </ion-row>
+          </ion-col>
+        
 
-    <button ion-button (click) = "createTicketButton()">+</button>
+        </ion-row>
+        <ion-row><ion-col col-3 text-center><button ion-button  (click) = "createTicketButton()" class="setBtn" text-center>Add Ticket</button></ion-col></ion-row>
+  </div>
   </ion-grid>
 </ion-content>
