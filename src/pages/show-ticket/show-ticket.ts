@@ -20,7 +20,7 @@ import {UpdateTicketsPage} from '../update-tickets/update-tickets';
 
 export class ShowTicketPage {
   status:any;
-  priority:any;
+  priority:Array<Object> = [];
   pendingTickets:Array<Object> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder) {
     this.getUnclearedTickets();
@@ -37,18 +37,20 @@ export class ShowTicketPage {
       if(res.status == "Success")
       {
         this.pendingTickets = res.msg;
-        if(+res.priority == 0)
-        {
-          this.priority = "Low";
-        }
-        else if(+res.priority == 1)
-        {
-          this.priority = "Medium";
-        }
-        else{
-          this.priority = "High";
-        }
-
+        this.pendingTickets.map((data) => {
+          if(data.priority == 0)
+          {
+            data.priorityVal = "Low";
+          }
+          else if(data.priority == 1)
+          {
+            data.priorityVal = "Medium";
+          }
+          else{
+            data.priorityVal = "High";
+          }
+          return data;
+        })
         console.log(this.pendingTickets);
       }
     })
