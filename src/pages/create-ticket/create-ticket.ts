@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, ViewController } 
 import { Http, Headers, Jsonp } from '@angular/http';
 import { FormBuilder, FormGroup, Validators, Form, ValidatorFn, AbstractControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
+import {ShowTicketPage} from '../show-ticket/show-ticket';
 
 /**
  * Generated class for the CreateTicketPage page.
@@ -63,7 +64,10 @@ export class CreateTicketPage {
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
     this.http.post('http://localhost:8080/suprath/suprath.php?rquest=createTicket', JSON.stringify(data), {headers:headers}).map(res => res.json()).subscribe(res => {
-      console.log(res);
+      if(res.status == "Success")
+      {
+        this.navCtrl.push(ShowTicketPage);
+      }
     });
   }
 

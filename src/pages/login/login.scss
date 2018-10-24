@@ -1,3 +1,65 @@
 page-login {
+   
+    
+    .leftPane{
+        background-color: #308cee;
+        .setImage{
+            display: flex;
+            margin: auto;
+            width: 36%;
+        }
+    }
 
+    .login-card{
+        width: 80%;
+        display: flex;
+        margin: auto;
+        margin-top: 10%;
+        box-shadow: 2px 2px 4px #8080808f;
+    }
+
+    .textIntro{
+        color: white;
+        margin-top: 12%;
+        font-size: 1.5em;
+    }
+
+    .welcome{
+        font-size: 2em;
+    }
+    
+    .introExpanded{
+        font-size: 1.1em;
+        color: white;
+    }
+
+    .iconMargin{
+        margin-right: 2%;
+    }
+
+    .introMargin{
+        margin-top: 15%;
+        margin-bottom: 20%;
+    }
+    .commonpadding{
+        margin-left: 15%;
+    }
+
+    .rightPane
+    {
+        width: 80%;
+        margin-top: 4%;
+        margin-left: 4%;
+        background-color: white;
+    }
+
+    .setButton{
+        button{
+            background-color: #308cee;
+            width: 50%;
+        }
+        
+        margin-top: 5%;
+    }
 }
+

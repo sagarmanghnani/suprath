@@ -4,31 +4,55 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
-
-</ion-header>
 
 
-<ion-content padding>
 
+<ion-content>
+<div class="login-card">
   <ion-grid>
-      <form [formGroup] = "login">
-    <ion-list >
-        <ion-item>
-          <ion-label floating>Username</ion-label>
-          <ion-input type="text"formControlName = "username"></ion-input>
-        </ion-item>
-        
-        <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password" formControlName = "password" ></ion-input>
-        </ion-item>
-      </ion-list>
-      <button ion-button (click) = "logintoUser()">Login</button>
-    </form>
+    <ion-row>
+      <ion-col col-lg-4 class="leftPane">
+        <!-- <ion-row> 
+          <img src="../../assets/imgs/suprath1.png" class="setImage"/>
+        </ion-row> -->
+        <ion-row>
+          <ion-col text-center class="textIntro"><span class="welcome">Welcome</span><br> to Suprath Technologies</ion-col>
+        </ion-row>
+      <div class="introMargin">
+        <ion-row>
+          <ion-col  class="introExpanded commonpadding"><ion-icon name="checkbox" color = light class="iconMargin"></ion-icon>Natural Language Processing</ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col  class="introExpanded commonpadding"><ion-icon name="checkbox" color = light class="iconMargin"></ion-icon>Computer Vision</ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col  class="introExpanded commonpadding"><ion-icon name="checkbox" color = light class="iconMargin"></ion-icon>Image Processing</ion-col>
+            </ion-row>
+      </div>
+      </ion-col>
+
+
+      <ion-col col-lg-8>
+        <form [formGroup] = "login">
+        <div class="rightPane">
+            <ion-list >
+              <ion-item>
+                <ion-label floating>Username</ion-label>
+                <ion-input type="text"formControlName = "username"></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" formControlName = "password" ></ion-input>
+              </ion-item>
+            </ion-list>
+            <ion-row><ion-col class="setButton" text-center><button ion-button (click) = "logintoUser()">Login</button></ion-col></ion-row>
+        </div>
+        </form>
+    </ion-col>
+  </ion-row>
   </ion-grid>
+</div>
 </ion-content>

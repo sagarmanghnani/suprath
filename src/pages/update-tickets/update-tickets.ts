@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';import { Http, Headers, Jsonp } from '@angular/http';
 import { FormBuilder, FormGroup, Validators, Form, ValidatorFn, AbstractControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
+import {ShowTicketPage} from '../show-ticket/show-ticket';
 /**
  * Generated class for the UpdateTicketsPage page.
  *
@@ -62,7 +63,10 @@ export class UpdateTicketsPage {
     let headers = new Headers();
     headers.append('Content-type', 'application/json');
     this.http.post('http://localhost:8080/suprath/suprath.php?rquest=updateTicket', JSON.stringify(data), {headers:headers}).map(res => res.json()).subscribe(res => {
-      console.log(res);
+      if(res.status == "Success")
+      {
+        this.navCtrl.push(ShowTicketPage);
+      }
     })
   }
 
