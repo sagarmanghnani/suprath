@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { CreateTicketPage } from '../pages/create-ticket/create-ticket';
 import {ShowTicketPage} from '../pages/show-ticket/show-ticket';
 import { UpdateTicketsPage } from '../pages/update-tickets/update-tickets';
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,
@@ -23,6 +24,7 @@ import { UpdateTicketsPage } from '../pages/update-tickets/update-tickets';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     HttpModule,
   ],
   bootstrap: [IonicApp],

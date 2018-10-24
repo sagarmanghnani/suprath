@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators, Form, ValidatorFn, AbstractControl 
 import 'rxjs/add/operator/map';
 import {UpdateTicketsPage} from '../update-tickets/update-tickets';
 import {CreateTicketPage} from '../create-ticket/create-ticket';
+import { Storage } from '@ionic/storage';
+import {LoginPage} from '../login/login';
 
 /**
  * Generated class for the ShowTicketPage page.
@@ -24,7 +26,7 @@ export class ShowTicketPage {
   priority:Array<Object> = [];
   pendingTickets:Array<Object> = [];
   loginId: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder, public modalCtrl: ModalController, public storage: Storage) {
     this.getUnclearedTickets();
     this.loginId = this.navParams.get('id');
   }
@@ -62,17 +64,26 @@ export class ShowTicketPage {
 
   createTicketButton()
   {
-    let addModal = this.modalCtrl.create(CreateTicketPage, {
-      loginId: this.loginId
-    });
-    addModal.present();
+    this.storage.get('loginId').then((val) => {
+      let addModal = this.modalCtrl.create(CreateTicketPage, {
+        loginId: val
+      });
+      addModal.present();
+    })
+    
   }
 
   pressedTickets(ticketNumber)
   {
-    this.navCtrl.push(UpdateTicketsPage, {
+    let addModal = this.modalCtrl.create(UpdateTicketsPage, {
       ticketId: ticketNumber
     });
+    addModal.present();
+  }
+
+  logout()
+  {
+    this.navCtrl.push(LoginPage);
   }
 
 }

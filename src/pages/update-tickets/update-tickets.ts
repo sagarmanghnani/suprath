@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';import { Http, Headers, Jsonp } from '@angular/http';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';import { Http, Headers, Jsonp } from '@angular/http';
 import { FormBuilder, FormGroup, Validators, Form, ValidatorFn, AbstractControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
 /**
@@ -19,7 +19,7 @@ export class UpdateTicketsPage {
   ticketNumber:any;
   ownerArray:Array<Object> = [];
   updateTickets:FormGroup
-  constructor(public navCtrl: NavController, public navParams: NavParams ,public http:Http, public formBuilder:FormBuilder ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams ,public http:Http, public formBuilder:FormBuilder, public view:ViewController ) {
     this.updateTickets = formBuilder.group({
       ticketStatus:[''],
       priority:[''],
@@ -66,6 +66,9 @@ export class UpdateTicketsPage {
     })
   }
 
-  
+  closeModal()
+  {
+    this.view.dismiss();
+  }
 
 }

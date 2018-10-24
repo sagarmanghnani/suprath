@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators, Form, ValidatorFn, AbstractControl 
 import 'rxjs/add/operator/map';
 import {CreateTicketPage} from '../create-ticket/create-ticket';
 import {ShowTicketPage} from '../show-ticket/show-ticket';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the LoginPage page.
  *
@@ -20,7 +21,7 @@ import {ShowTicketPage} from '../show-ticket/show-ticket';
 export class LoginPage {
 
   login:FormGroup
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder, public storage:Storage) {
     this.login = formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -42,6 +43,7 @@ export class LoginPage {
     this.http.post('http://localhost:8080/suprath/suprath.php?rquest=login', JSON.stringify(data), {headers:headers}).map(res => res.json()).subscribe((res) => {
       if(res.status == "Success")
       {
+        this.storage.set("loginId", res.id);
         this.navCtrl.push(ShowTicketPage, {
           id:res.id
         })
