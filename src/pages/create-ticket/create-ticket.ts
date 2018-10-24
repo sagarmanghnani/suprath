@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { Http, Headers, Jsonp } from '@angular/http';
 import { FormBuilder, FormGroup, Validators, Form, ValidatorFn, AbstractControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
@@ -22,7 +22,7 @@ export class CreateTicketPage {
   ownerArray:Array<Object> = [];
   showOwner:any;
   orignalOwner:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder, public modalCtrl: ModalController, public viewCtrl: ViewController) {
     this.createTicket = formBuilder.group({
         ticketStatus:[''],
         priority:[''],
@@ -31,7 +31,7 @@ export class CreateTicketPage {
         raisedBy: ['']
     });
     this.getOwners();
-    this.orignalOwner = this.navParams.get('id');
+    this.orignalOwner = this.navParams.get('loginId');
   }
 
   ionViewDidLoad() {
@@ -67,5 +67,9 @@ export class CreateTicketPage {
     });
   }
 
+  closeModal()
+  {
+    this.viewCtrl.dismiss();
+  }
 
 }
