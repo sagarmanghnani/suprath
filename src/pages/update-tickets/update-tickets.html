@@ -20,6 +20,11 @@
     <ion-grid>
         <ion-list>
             <form [formGroup] = "updateTickets">
+
+                <ion-row *ngIf = "error">
+                    {{error}}
+                  </ion-row>
+                  
               <ion-item >
                 <ion-label>Select Owner</ion-label>
                 <ion-select formControlName = "Owner">

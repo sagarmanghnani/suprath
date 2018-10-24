@@ -11,6 +11,7 @@ import {LoginPage} from '../login/login';
 export class HomePage {
 
   user: FormGroup;
+  error:any;
   constructor(public navCtrl: NavController, public http: Http, public formBuilder:FormBuilder) {
       this.user = formBuilder.group({
         username: ['', Validators.required],
@@ -39,6 +40,10 @@ export class HomePage {
       if(res.status = "Success")
       {
         this.navCtrl.push(LoginPage);
+      }
+      else
+      {
+        this.error = res.msg;
       }
     });
     

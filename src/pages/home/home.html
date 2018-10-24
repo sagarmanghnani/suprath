@@ -10,30 +10,46 @@
   <ion-grid>
     <ion-list >
       <form [formGroup] = "user">
+
+          <ion-row *ngIf = "error">
+              {{error}}
+            </ion-row>
+            
         <ion-item>
           <ion-label floating>Fullname</ion-label>
           <ion-input type="text" formControlName = "fullName" ></ion-input>
         </ion-item>
 
+        <p *ngIf = "!user.controls.fullName.valid && (user.controls.fullName.dirty)">fullName is required</p>        
+
         <ion-item>
           <ion-label floating>Username</ion-label>
           <ion-input type="text" formControlName = "username"></ion-input>
         </ion-item>
+        <p *ngIf = "!user.controls.username.valid && (user.controls.username.dirty)">username is required</p>        
 
         <ion-item>
             <ion-label floating>Email</ion-label>
             <ion-input type="email" formControlName = "email"></ion-input>
           </ion-item>
 
+          <p *ngIf = "!user.controls.email.valid && (user.controls.email.dirty)">email is required</p>        
+
           <ion-item>
               <ion-label floating>Password</ion-label>
               <ion-input type="password" formControlName = "password"></ion-input>
             </ion-item>
 
+            <p *ngIf = "!user.controls.password.valid && (user.controls.password.dirty)">password is required</p>        
+
+
           <ion-item>
               <ion-label floating>Phone</ion-label>
               <ion-input type="number" formControlName = "phone"></ion-input>
             </ion-item>
+
+            <p *ngIf = "!user.controls.phone.valid && (user.controls.phone.dirty)">Name is required</p>        
+
       </form>
     </ion-list>
 

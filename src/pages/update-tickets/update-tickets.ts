@@ -19,7 +19,8 @@ export class UpdateTicketsPage {
 
   ticketNumber:any;
   ownerArray:Array<Object> = [];
-  updateTickets:FormGroup
+  updateTickets:FormGroup;
+  error:any;
   constructor(public navCtrl: NavController, public navParams: NavParams ,public http:Http, public formBuilder:FormBuilder, public view:ViewController ) {
     this.updateTickets = formBuilder.group({
       ticketStatus:[''],
@@ -66,6 +67,10 @@ export class UpdateTicketsPage {
       if(res.status == "Success")
       {
         this.navCtrl.push(ShowTicketPage);
+      }
+      else
+      {
+        this.error = res.msg;
       }
     })
   }

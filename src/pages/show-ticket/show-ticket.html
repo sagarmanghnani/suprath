@@ -18,7 +18,14 @@
   <div class="basicPadding">  
     <ion-row wrap>
       
-        
+        <ion-row *ngIf = "error">
+            {{error}}
+          </ion-row>
+
+          <ion-row *ngIf = "!pendingTickets">
+              Currently there are no tickets created or Pending
+            </ion-row>
+           
         <ion-col *ngFor="let tickets of pendingTickets" (click)="pressedTickets(tickets.ticketNumber)" col-lg-3 col-md-6 col-12 class="setCard " >
             <span class = "cardHeading"><h2 text-center class="setText">Ticket number: {{tickets.ticketNumber}}</h2></span> 
             <ion-col class="description">{{tickets.ticketDescription}}</ion-col><br>

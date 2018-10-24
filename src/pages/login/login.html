@@ -33,23 +33,34 @@
 
       <ion-col col-lg-8>
         <form [formGroup] = "login">
+
+            <ion-row *ngIf = "error">
+                {{error}}
+              </ion-row>
+
         <div class="rightPane">
             <ion-list >
               <ion-item>
                 <ion-label floating>Username</ion-label>
                 <ion-input type="text"formControlName = "username"></ion-input>
               </ion-item>
-              
+              <p *ngIf = "!login.controls.username.valid && (login.controls.username.dirty)">username is required</p>
               <ion-item>
                 <ion-label floating>Password</ion-label>
                 <ion-input type="password" formControlName = "password" ></ion-input>
               </ion-item>
+
+              <p *ngIf = "!login.controls.password.valid && (login.controls.password.dirty)">password is required</p>
             </ion-list>
             <ion-row><ion-col class="setButton" text-center><button ion-button (click) = "logintoUser()">Login</button></ion-col></ion-row>
         </div>
+        <br>
+        <ion-row ><ion-col text-center>Don't have account?<a (click)="test()">Sign up here</a></ion-col></ion-row>
         </form>
     </ion-col>
   </ion-row>
+
+  
   </ion-grid>
 </div>
 </ion-content>

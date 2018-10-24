@@ -27,6 +27,8 @@
               <ion-option *ngFor = "let owner of ownerArray" [value] = owner.id>{{owner.fullName}}</ion-option>
             </ion-select>
           </ion-item>
+          <p *ngIf = "!createTicket.controls.Owner.valid && (createTicket.controls.Owner.dirty)">Owner is required</p>
+
 
           <ion-item >
               <ion-label>Select Ticket Status</ion-label>
@@ -46,10 +48,10 @@
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Ticket Description</ion-label>
+            <ion-label floating>Ticket Description*</ion-label>
             <ion-input type="text" formControlName="ticketDescription"></ion-input>
           </ion-item>
-
+          <p *ngIf = "!createTicket.controls.ticketDescription.valid && (createTicket.controls.ticketDescription.dirty)">ticketDescription is required</p>
           <ion-item>
               <ion-label floating>Customer Name</ion-label>
               <ion-input type="text" formControlName="raisedBy"></ion-input>

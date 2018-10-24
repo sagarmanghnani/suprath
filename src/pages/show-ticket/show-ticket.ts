@@ -22,6 +22,7 @@ import {LoginPage} from '../login/login';
 })
 
 export class ShowTicketPage {
+  error:any;
   status:any;
   priority:Array<Object> = [];
   pendingTickets:Array<Object> = [];
@@ -56,7 +57,12 @@ export class ShowTicketPage {
           }
           return data;
         })
+
         console.log(this.pendingTickets);
+      }
+      else
+      {
+        this.error = res.msg;
       }
     })
   }

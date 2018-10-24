@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import {CreateTicketPage} from '../create-ticket/create-ticket';
 import {ShowTicketPage} from '../show-ticket/show-ticket';
 import { Storage } from '@ionic/storage';
+import {HomePage} from '../home/home';
 /**
  * Generated class for the LoginPage page.
  *
@@ -21,6 +22,7 @@ import { Storage } from '@ionic/storage';
 export class LoginPage {
 
   login:FormGroup
+  error: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public formBuilder:FormBuilder, public storage:Storage) {
     this.login = formBuilder.group({
       username: ['', Validators.required],
@@ -48,6 +50,15 @@ export class LoginPage {
           id:res.id
         })
       }
+      else
+      {
+        this.error = res.msg;
+      }
     });
+  }
+
+  test()
+  {
+    this.navCtrl.push(HomePage);
   }
 }
